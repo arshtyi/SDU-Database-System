@@ -1314,3 +1314,4 @@ FROM bk.deptor t1,
    HAVING (SUM (amount) > 2000000)) t2
 WHERE t1.pid = t2.pid
 ```
+
