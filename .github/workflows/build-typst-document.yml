@@ -30,17 +30,17 @@ jobs:
       - name: Convert Markdown to Typst and append to main.typ
         run: |
           sudo apt-get update && sudo apt-get install -y pandoc
-          for dir in $(ls experiment | grep -E '^[0-9]+$' | sort -n); do
-            if [ -f "experiment/$dir/$dir.md" ]; then
-              pandoc "experiment/$dir/$dir.md" -o "experiment/$dir/$dir.typ"
+          for dir in $(ls experiment/1 | grep -E '^[0-9]+$' | sort -n); do
+            if [ -f "experiment/1/$dir/$dir.md" ]; then
+              pandoc "experiment/1/$dir/$dir.md" -o "experiment/1/$dir/$dir.typ"
               echo "" >> main.typ
-              cat "experiment/$dir/$dir.typ" >> main.typ
+              cat "experiment/1/$dir/$dir.typ" >> main.typ
             fi
           done
-          if [ -f "experiment/answer/answer.md" ]; then
-            pandoc "experiment/answer/answer.md" -o "experiment/answer/answer.typ"
+          if [ -f "experiment/1/answer/answer.md" ]; then
+            pandoc "experiment/1/answer/answer.md" -o "experiment/1/answer/answer.typ"
             echo "" >> main.typ
-            cat "experiment/answer/answer.typ" >> main.typ
+            cat "experiment/1/answer/answer.typ" >> main.typ
           fi
 
       - name: Setup Typst
