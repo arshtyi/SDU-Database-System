@@ -20,7 +20,7 @@ jobs:
         uses: fontist/setup-fontist@v2
 
       - name: Install fonts from manifest
-        run: fontist manifest install --confirm-license manifest.yml
+        run: fontist install "Fira Code" "IBM Plex Mono" "IBM Plex Serif" --newest -a -h
 
       - name: Install Source Han Serif SC
         run: |
