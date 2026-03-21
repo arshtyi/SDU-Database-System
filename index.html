@@ -1,105 +1,165 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>数据库系统实验索引</title>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <title>实验文档索引</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
     <style>
-        body { font-family: 'Segoe UI', 'Microsoft YaHei', Arial, sans-serif; background: #f8f9fa; margin: 0; padding: 0; }
-        .container { max-width: 900px; margin: 40px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px #0001; padding: 32px; }
-        h1 { text-align: center; color: #2c3e50; }
-        .lab-list { margin: 32px 0; }
-        .lab { margin-bottom: 32px; border-left: 4px solid #3498db; padding-left: 16px; background: #f4f8fb; border-radius: 6px; }
-        .lab h2 { color: #2980b9; margin-top: 0; }
-        .md-content { background: #f9f9f9; border-radius: 6px; padding: 16px; margin: 12px 0; font-size: 15px; overflow-x: auto; }
-        pre { background: #272822; color: #f8f8f2; border-radius: 4px; padding: 10px; overflow-x: auto; }
-        code { font-family: 'Fira Mono', 'Consolas', monospace; }
-        .toc { margin-bottom: 32px; background: #eaf6ff; border-radius: 6px; padding: 16px; }
-        .toc ul { padding-left: 20px; }
-        .toc a { color: #2980b9; text-decoration: none; }
-        .toc a:hover { text-decoration: underline; }
-        @media (max-width: 600px) { .container { padding: 8px; } }
+        body {
+            background: #f6f8fa;
+            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 32px 24px 24px 24px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .exp-list {
+            margin-bottom: 24px;
+        }
+        .exp-folder {
+            margin-bottom: 12px;
+        }
+        .exp-folder > summary {
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .answer-toggle {
+            margin: 8px 0;
+            display: inline-block;
+            cursor: pointer;
+            color: #0969da;
+            background: #eaeef2;
+            border: none;
+            border-radius: 4px;
+            padding: 2px 10px;
+            font-size: 0.95em;
+            transition: background 0.2s;
+        }
+        .answer-toggle:hover {
+            background: #d0d7de;
+        }
+        .markdown-body {
+            background: none;
+            padding: 0;
+        }
+        details[open] > summary:before {
+            content: "▼ ";
+        }
+        details > summary:before {
+            content: "▶ ";
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>数据库系统实验索引</h1>
-        <div class="toc" id="toc">
-            <strong>目录</strong>
-            <ul>
-                <li><a href="#lab1">Lab 1</a></li>
-                <li><a href="#lab2">Lab 2</a></li>
-                <li><a href="#lab3">Lab 3</a></li>
-                <li><a href="#lab4">Lab 4</a></li>
-                <li><a href="#lab5">Lab 5</a></li>
-                <li><a href="#lab6">Lab 6</a></li>
-                <li><a href="#lab7">Lab 7</a></li>
-                <li><a href="#lab8">Lab 8</a></li>
-                <li><a href="#answer">Answer</a></li>
-            </ul>
-        </div>
-        <div class="lab-list">
-            <div class="lab" id="lab1">
-                <h2>Lab 1</h2>
-                <div class="md-content" id="md-lab1"></div>
-            </div>
-            <div class="lab" id="lab2">
-                <h2>Lab 2</h2>
-                <div class="md-content" id="md-lab2"></div>
-            </div>
-            <div class="lab" id="lab3">
-                <h2>Lab 3</h2>
-                <div class="md-content" id="md-lab3"></div>
-            </div>
-            <div class="lab" id="lab4">
-                <h2>Lab 4</h2>
-                <div class="md-content" id="md-lab4"></div>
-            </div>
-            <div class="lab" id="lab5">
-                <h2>Lab 5</h2>
-                <div class="md-content" id="md-lab5"></div>
-            </div>
-            <div class="lab" id="lab6">
-                <h2>Lab 6</h2>
-                <div class="md-content" id="md-lab6"></div>
-            </div>
-            <div class="lab" id="lab7">
-                <h2>Lab 7</h2>
-                <div class="md-content" id="md-lab7"></div>
-            </div>
-            <div class="lab" id="lab8">
-                <h2>Lab 8</h2>
-                <div class="md-content" id="md-lab8"></div>
-            </div>
-            <div class="lab" id="answer">
-                <h2>Answer</h2>
-                <div class="md-content" id="md-answer"></div>
-            </div>
-        </div>
-    </div>
-    <script>
-        // 定义各实验的 md 文件路径
-        const mdFiles = {
-            lab1: 'experiment/1/1/1.md',
-            lab2: 'experiment/1/2/2.md',
-            lab3: 'experiment/1/3/3.md',
-            lab4: 'experiment/1/4/4.md',
-            lab5: 'experiment/1/5/5.md',
-            lab6: 'experiment/1/6/6.md',
-            lab7: 'experiment/1/7/7.md',
-            lab8: 'experiment/1/8/8.md',
-            answer: 'experiment/1/answer/answer.md',
+<div class="container">
+    <h1>实验文档索引</h1>
+    <div id="exp-list" class="exp-list"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>
+// 动态加载目录结构和md内容
+const expRoot = 'experiment';
+const expListDiv = document.getElementById('exp-list');
+
+async function fetchText(url) {
+    try {
+        const resp = await fetch(url);
+        if (!resp.ok) return null;
+        return await resp.text();
+    } catch { return null; }
+}
+
+function createDetails(title, children) {
+    const details = document.createElement('details');
+    const summary = document.createElement('summary');
+    summary.textContent = title;
+    details.appendChild(summary);
+    if (children && children.length) {
+        children.forEach(child => details.appendChild(child));
+    }
+    return details;
+}
+
+function createMarkdownSection(md, isAnswer) {
+    const section = document.createElement('div');
+    section.className = 'markdown-body';
+    section.innerHTML = marked.parse(md || '');
+    // 代码高亮
+    section.querySelectorAll('pre code').forEach(block => {
+        hljs.highlightElement(block);
+    });
+    if (isAnswer) {
+        const wrapper = document.createElement('div');
+        const btn = document.createElement('button');
+        btn.className = 'answer-toggle';
+        btn.textContent = '显示/隐藏答案';
+        let shown = false;
+        const answerDiv = document.createElement('div');
+        answerDiv.style.display = 'none';
+        answerDiv.appendChild(section);
+        btn.onclick = () => {
+            shown = !shown;
+            answerDiv.style.display = shown ? '' : 'none';
         };
-        for (const [key, path] of Object.entries(mdFiles)) {
-            fetch(path).then(r => {
-                if (!r.ok) throw new Error('Not found');
-                return r.text();
-            }).then(md => {
-                document.getElementById('md-' + key).innerHTML = marked.parse(md);
-            }).catch(() => {
-                document.getElementById('md-' + key).innerHTML = '<em>未找到 ' + path + '</em>';
-            });
-        }
-    </script>
+        wrapper.appendChild(btn);
+        wrapper.appendChild(answerDiv);
+        return wrapper;
+    }
+    return section;
+}
+
+async function buildTree(dir, relPath = '') {
+    // 获取目录内容
+    let url = `${expRoot}${relPath}/`;
+    let resp;
+    try {
+        resp = await fetch(url);
+    } catch { return []; }
+    if (!resp || !resp.ok) return [];
+    const text = await resp.text();
+    // 解析目录（GitHub Pages不支持目录API，需预生成或用jsdelivr等CDN）
+    // 这里假设用jsdelivr可列目录，否则需静态生成
+    // 这里只做演示，实际部署需用静态生成
+    return [];
+}
+
+async function buildStaticTree() {
+    // 静态写死目录结构（如需动态请用Node脚本预生成）
+    // 1/1/1.md, 1/2/2.md, ... 1/8/8.md, 1/answer/answer.md
+    const exp1 = createDetails('实验1', [
+        createDetails('1', [await createMdNode('1/1/1.md')]),
+        createDetails('2', [await createMdNode('1/2/2.md')]),
+        createDetails('3', [await createMdNode('1/3/3.md')]),
+        createDetails('4', [await createMdNode('1/4/4.md')]),
+        createDetails('5', [await createMdNode('1/5/5.md')]),
+        createDetails('6', [await createMdNode('1/6/6.md')]),
+        createDetails('7', [await createMdNode('1/7/7.md')]),
+        createDetails('8', [await createMdNode('1/8/8.md')]),
+        createDetails('答案', [await createMdNode('1/answer/answer.md', true)])
+    ]);
+    expListDiv.appendChild(exp1);
+}
+
+async function createMdNode(path, isAnswer = false) {
+    const url = `${expRoot}/${path}`;
+    const md = await fetchText(url);
+    return createMarkdownSection(md, isAnswer);
+}
+
+// 入口
+buildStaticTree();
+</script>
 </body>
 </html>
