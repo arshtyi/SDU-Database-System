@@ -20,7 +20,7 @@ jobs:
         uses: fontist/setup-fontist@v2
 
       - name: Install fonts from manifest
-        run: fontist install "Fira Code" "IBM Plex Mono" "IBM Plex Serif" --newest -a -h
+        run: fontist install "Fira Code" "IBM Plex Mono" "IBM Plex Serif" "Times New Roman" "SimHei" "Noto Serif CJK SC" "Noto Sans CJK SC" "TeX Gyre Termes Math" "TeXGyreTermes" --newest -a -h
 
       - name: Install Source Han Serif SC
         run: |
@@ -33,21 +33,26 @@ jobs:
           for dir in $(ls experiment/1 | grep -E '^[0-9]+$' | sort -n); do
             if [ -f "experiment/1/$dir/$dir.md" ]; then
               pandoc "experiment/1/$dir/$dir.md" -o "experiment/1/$dir/$dir.typ"
-              echo "" >> main.typ
-              cat "experiment/1/$dir/$dir.typ" >> main.typ
+              echo "" >> "experiment/main.typ"
+              cat "experiment/1/$dir/$dir.typ" >> "experiment/main.typ"
             fi
           done
           if [ -f "experiment/1/answer/answer.md" ]; then
             pandoc "experiment/1/answer/answer.md" -o "experiment/1/answer/answer.typ"
-            echo "" >> main.typ
-            cat "experiment/1/answer/answer.typ" >> main.typ
+            echo "" >> "experiment/main.typ"
+            cat "experiment/1/answer/answer.typ" >> "experiment/main.typ"
           fi
+
+      - name: Create output directory
+        run: mkdir -p output
 
       - name: Setup Typst
         uses: typst-community/setup-typst@v4
 
       - name: Compile Typst document
-        run: typst compile main.typ main.pdf --font-path ~/.fontist/fonts
+        run: |
+          typst compile experiment/main.typ output/experiment.pdf --font-path ~/.fontist/fonts
+          typst compile homework/main.typ output/homework.pdf --font-path ~/.fontist/fonts
 
       - name: Get current date
         id: date
@@ -65,6 +70,6 @@ jobs:
 
             - **Commit Hash**: `${{ github.sha }}`
             - **Commit Message**: ${{ github.event.head_commit.message }}
-          files: main.pdf
+          files: output/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -2,3 +2,9 @@ Fira Code
 IBM Plex Mono
 IBM Plex Serif
 Source Han Serif SC
+Times New Roman
+SimHei
+Noto Serif CJK SC
+Noto Sans CJK SC
+TeX Gyre Termes Math
+TeXGyreTermes
