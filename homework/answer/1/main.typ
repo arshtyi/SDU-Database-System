@@ -11,8 +11,8 @@
     student-infos: ((name: "彭靖轩", id: "202400130242"),),
 )
 #set enum(numbering: n => emph(strong(numbering("a.", n))))
-
 #show: zebraw.with(lang: false)
+
 #homework.simple-question[
     _3.4_
 ]
