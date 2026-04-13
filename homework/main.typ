@@ -1,7 +1,7 @@
 #import "@preview/ezexam:0.3.1": *
 #import "@preview/zebraw:0.6.1": *
 // #import "@preview/subpar:0.2.2"
-#import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
+// #import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
 // #import "@preview/pinit:0.2.2": *
 
 #set page(height: auto)
@@ -28,182 +28,190 @@
 #notice(
     [出于方便使用#link("https://github.com/gbchu/ezexam", "gbchu/ezexam:0.3.1")作模板.],
     [源码:#link("https://github.com/arshtyi/SDU-Database-System").],
-    [课程主要参考的是#link("https://www.db-book.com/", "The book"). 此书题解容易找到,仅记录题目.],
+    [课程主要参考的是#link("https://www.cmpedu.com/books/book/5610387.htm", "The book"). 注意用的是*本科教学版*.],
 )
 
 = No.1
 #question[
-    (_3.4_) Consider the insurance database of Figure 3.17, where the primary keys are underlined. Construct the following SQL queries for this relational database.
-    + Find the total number of people who owned cars that were involved in accidents in 2017.
-    + Delete all year-2010 cars belonging to the person whose ID is '12345'.
+    (_3.4_) 考虑图3-17的保险公司数据库,其中主码下划线.构造以下SQL查询:
+    + 找到2017年涉及事故的汽车的车主总数.
+    + 删除ID为'12345'的人的所有2010年汽车.
 ]
 
 #question[
-    (_3.8_) Consider the bank database of Figure 3.18, where the primary keys are underlined. Construct the following SQL queries for this relational database.
-    + Find the ID of each customer of the bank who has an account but not a loan.
-    + Find the ID of each customer who lives on the same street and in the same city as customer '12345'.
-    + Find the name of each branch that has at least one customer who has an account in the bank and who lives in "Harrison".
+    (_3.8_) 考虑图3-18的银行数据库,其中主码下划线.构造以下SQL查询:
+    + 找到每个有账户但没有贷款的客户的ID.
+    + 找到住在与客户'12345'同一城市且同一街道的每个客户的ID.
+    + 找到每个这样的分行的名字:该分行至少有一个客户在银行有账户,并且住在"Harrison".
 ]
 
 #question[
-    (_3.9_) Consider the relational database of Figure 3.19, where the primary keys are underlined. Give an expression in SQL for each of the following queries.
-    + Find the ID, name, and city of residence of each employee who works for "First Bank Corporation".
-    + Find the ID, name, and city of residence of each employee who works for "First Bank Corporation" and earns more than \$10000.
-    + Find the ID of each employee who does not work for "First Bank Corporation".
-    + Find the ID of each employee who earns more than every employee of "Small Bank Corporation".
-    + Assume that companies may be located in several cities. Find the name of each company that is located in every city in which "Small Bank Corporation" is located.
-    + Find the name of the company that has the most employees (or companies, in the case where there is a tie for the most).
-    + Find the name of each company whose employees earn a higher salary, on average, than the average salary at "First Bank Corporation".
+    (_3.9_) 考虑图3-19的员工数据库,其中主码下划线.给出以下查询的SQL表达式:
+    + 找到每个为"First Bank Corporation"工作的员工的ID、姓名和居住城市.
+    + 找到每个为"First Bank Corporation"工作且收入超过$10000$美元的员工的ID、姓名和居住城市.
+    + 找到每个不为"First Bank Corporation"工作的员工的ID.
+    + 找到每个收入超过"Small Bank Corporation"的每个员工的ID.
+    + 假设公司可能位于几个城市.找到位于"Small Bank Corporation"所在的所有城市的每个公司名称.
+    + 找到员工最多的公司名称(如果有员工最多的公司有多个,则一并列出).
+    + 找到每个员工平均收入高于"First Bank Corporation"平均收入的公司名称.
 ]
 
 #question[
-    (_3.15_) Consider the bank database of Figure 3.18, where the primary keys are underlined. Construct the following SQL queries for this relational database.
-    + Find each customer who has an account at _every_ branch located in "Brooklyn".
-    + Find the total sum of all loan amounts in the bank.
-    + Find the names of all branches that have assets greater than those of at least one branch located in "Brooklyn"
+    (_3.15_) 考虑图3-18的银行数据库,其中主码下划线.构造以下SQL查询:
+    + 找到在"Brooklyn"的每个分行都有账户的每个客户.
+    + 找到银行中所有贷款金额的总和.
+    + 找出资产比位于"Brooklyn"的至少一个分行的资产更大的所有分行的名字.
 ]
 
 #question[
-    (_3.16_) Consider the employee database of Figure 3.19, where the primary keys are underlined. Given an expression in SQL for each of the following queries.
-    + Find ID and name of each employee who lives in the same city as the location of the company for which the employee works.
-    + Find ID and name of each employee who lives in the same city and on the same street as does her or his manager.
-    + Find ID and name of each employee who earns more than the average salary of all employees of her or his company.
-    + Find the company that has the smallest payroll.
+    (_3.16_) 考虑图3-19的员工数据库,其中主码下划线.给出以下查询的SQL表达式:
+    + 找到每个员工的ID和姓名,这些员工住在与他们工作的公司所在的城市相同的城市.
+    + 找到每个员工的ID和姓名,这些员工住在与他们的经理所在的城市和街道相同的城市和街道.
+    + 找到每个员工的ID和姓名,这些员工的收入超过他们所在公司的所有员工的平均收入.
+    + 找到拥有最小工资总额的公司名称.
 ]
 
 #question[
-    (_3.17_) Consider the employee database of Figure 3.19. Give an expression in SQL for each of the following queries.
-    + Give all employees for "First Bank Corporation" a 10 percent raise.
-    + Give all managers of "First Bank Corporation" a 10 percent raise.
-    + Delete all tuples in the _works_ relation for employees of "Small Bank Corporation".
+    (_3.17_) 考虑图3-19的员工数据库,其中主码下划线.给出以下查询的SQL表达式:
+    + 给"First Bank Corporation"的所有员工加薪10%.
+    + 给"First Bank Corporation"的所有经理加薪10%.
+    + 删除"Small Bank Corporation"员工在_works_关系中的所有元组.
 ]
 
 #question[
-    (_3.21_) Consider the library database of Figure 3.20. Write the following queries in SQL.
-    + Find the member number and name of each member who has borrowed at least one book published by "McGraw-Hill".
-    + Find the member number and name of each member who has borrowed every book published by "McGraw-Hill".
-    + For each publisher, find the member number and name of each member who has borrowed more than five books of that publisher.
-    + Find the average number of books borrowed per member. Take into account that if a member does not borrow any books, then that member does not appear in the _borrowed_ relation at all, but that member still counts in the average.
+    (_3.21_) 考虑图3-20的图书馆数据库,其中主码下划线.给出以下查询的SQL表达式:
+    + 找到至少借过一本由"McGraw-Hill"出版的书的每个会员的会员号和姓名.
+    + 找到借过"McGraw-Hill"出版的每本书的每个会员的会员号和姓名.
+    + 对于每个出版社,找到借过该出版社的超过五本书的每个会员的会员号和姓名.
+    + 找到每个会员平均借书数量.考虑到如果一个会员没有借过任何书,那么该会员在_borrowed_关系中根本不出现,但该会员仍然计入平均数中.
 ]
 
 #question[
-    (_4.1_) Consider the following SQL query that seeks to find a list of titles of all courses taught in Spring 2017 along with the name of the instructor.
+    (_4.1_) 考虑以下SQL查询,该查询试图找到2017年春季所有课程的标题以及教师的姓名.
     ```sql
     SELECT name, title
     FROM instructor NATURAL JOIN teaches NATURAL JOIN section NATURAL JOIN course
     WHERE semester = 'Spring' AND year = 2017;
     ```
-    What is wrong with this query?
+    这个查询有什么问题?
 ]
 
 #question[
-    (_4.2_) Write the following queries in SQL:
-    + Display a list of all instructors, showing each instructor's ID and the number of sections taught. Make sure to show the number of sections as 0 for instuctors who have not taught any section. Your query should use an outer join, and should not use subqueries.
-    + Write the same query as in part a, but using a scalar subquery and not using outer join.
-    + Display the list of all course sections offered in Spring 2018, along with the ID and name of each instructor teaching the section. If a section has more than one instructor, that section should appear as many times in the result as it has instructors. If a section does not have any instructor, it should still appear in the result with the instructor name set to "-".
-    + Display the list of all departments, with the total number of instructors, in each department, without using subqueries. Make sure to show departments that have no instructors, and list those departments with an instructor count of zero.
+    (_4.2_) 用SQL编写以下查询:
+    + 显示所有教师的列表,显示每个教师的ID和教授的课程数量.确保显示的课程数量为0的教师也显示在结果中.你的查询应该使用外连接,并且不使用子查询.
+    + 使用标量子查询编写与a部分相同的查询,但不使用外连接.
+    + 显示2018年春季提供的所有课程部分的列表,以及每个教授该部分的教师的ID和姓名.如果一个部分有多个教师,则该部分应该在结果中出现多次,每个教师对应一次.如果一个部分没有任何教师,它仍然应该出现在结果中,教师姓名设置为"-".
+    + 显示所有部门的列表,以及每个部门的教师总数,不使用子查询.确保显示没有教师的部门,并将这些部门的教师数量列为零.
 ]
 
 #question[
-    (_4.7_) Consider the employee database of Figure 4.12. Give an SQL DDL definition of this database. Identify referential-integrity constraints that should hold, and include them in the DDL definition.
+    (_4.7_) 考虑图4-12的员工数据库.给出该数据库的SQL DDL定义.确定应该满足的参照完整性约束,并将它们包含在DDL定义中
 ]
 
 #question[
-    (_6.2_)  Consider a database that includes the entity sets _student_, _course_, and _section_ from the university schema and that additionally records the marks that students receive in different exams of different sections.
-    + Construct an E-R diagram that models exams as entities and uses a ternary relationship as part of the design.
-    + Construct an alternative E-R diagram that uses only a binary relationship between _student_ and _section_. Make sure that only one relationship exists between a particular _student_ and _section_ pair, yet you can represent the marks that a student gets in different exams.
+    (_6.2_) 考虑图6-11的职员数据库.使用关系代数表达式来表示下面的每个查询:
+    + 找出居住在"Miami"的每个员工的姓名.
+    + 找出所有工资超过$100000$美元的员工的姓名.
+    + 找出居住在"Miami"的每个员工的姓名,并且他们的工资超过$100000$美元.
 ]
 
 #question[
-    (_6.3_) Design an E-R diagram for keeping track of the scoring statistics of your favorite sports team. You should store *the matches played*, *the scores in each match*, *the players in each match*, and *individual player scoring statistics for each match*. Summary statistics should be modeled as derived attributes with an explanation as to how they are computed.
+    (_6.3_) 考虑图6-12的银行数据库.使用关系代数表达式来表示下面的每个查询:
+    + 找出位于"Chicago"的每个分行的名字.
+    + 找出在"Downtown"分行有贷款的每位贷款人的ID.
 ]
 
 #question[
-    (_6.5_) An R diagram can be viewed as a graph. What do the following mean in termsof the structure of an enterprise schema?
-    + The graph is disconnected.
-    + The graph has a cycle.
+    (_6.5_) 定义关系代数的*除法算子*:设关系$r(R),s(S)$且$S subset.eq R$;也就是说模式$R$包含模式$S$中的所有属性.给定一个元组$t$,令$t[S]$表示元组$t$在$S$中属性上的投影.那么,$r div s$是$R-S$上的一个关系.元组$t$在$r div s$的充要条件是:
+    - $t$在$product_(R-S)(r)$中
+    - 对于每个$s$中的元组$t_s$,在$r$中存在一个元组$t_r$同时满足:
+        + $t_r[S] = t_s[S]$
+        + $t_r[R-S] = t$
+    根据上述定义:
+    + 使用除法算子写出一个关系代数表达式,找出所有选修过全部计算机科学课程的学生的ID.
+    + 展示如何在不适用除法的情况下,使用关系代数表达式来表示上述查询.
 ]
 
 #question[
-    (_6.9_) Suppose the _advisor_ relationship set were one-to-one. What extra constraints are required on the relation _advisor_ to ensure that the one-to-one cardinality constraint is enforced?
+    (_6.9_) 考虑图6-13的关系数据库,其中主码下划线.为下面的每个查询写出元组关系演算:
+    + 找出所有直接为"Jones"工作的员工.
+    + 找出所有直接为工作的员工居住的城市.
+    + 找出"Jones"的经理的经理的姓名.
+    + 找出比居住在"Miami"的所有员工收入更高的所有员工.
 ]
 
 #question[
-    (_6.11_)In SQL, foreign key constraints can reference only the primary key attributes of the referenced relation or other attributes declared to be a superkey using the *unique* constraint. As a result, total participation constraints on a many-to-many relationship set (or on the "one" side of a one-to-many relationship set) cannot be enforced on the relations created from the relationship set, using primary key, foreign key, and not null constraints on the relations.
-    + Explain why.
-    + Explain how to enforce total participation constaints using complex check constraints or assertions (see Section 4.4.8). (Unfortunately, these features are not supported on any widely used database currently.)
+    (_6.11_) 考虑图6-12的银行数据库.使用关系代数表达式表达下面的查询:
+    + 找出贷款额度超过$10000$美元的每个贷款号.
+    + 找出每个这样的存款人ID:拥有一个存款余额大于$6000$美元的账户.
+    + 找出每个这样的存款人ID:在"Uptown"分行有一个存款余额大于$6000$美元的账户
 ]
 
 #question[
-    (_6.12_) Consider the following lattice structure of generalization and specialization (attributes are not shown). For entity sets $A$, $B$, and $C$, explain how attributes are inherited from the higher level entity sets $X$ and $Y$. Discuss how to handle a case where an attribute of $X$ has the same name as some attribute of $Y$.
-
-    #diagram(
-        node-stroke: luma(80%),
-        node((1, 0), [$X$]),
-        node((3, 0), [$Y$]),
-        node((0, 2), [$A$]),
-        node((2, 2), [$B$]),
-        node((4, 2), [$C$]),
-        edge((0, 2), (1, 0), "-|>"),
-        edge((2, 2), (1, 0), "-|>"),
-        edge((2, 2), (3, 0), "-|>"),
-        edge((4, 2), (3, 0), "-|>"),
-    )
+    (_6.12_) 对于大学模式,使用关系代数编写下面的查询:
+    + 找出物理系中每位教师的ID和姓名.
+    + 找出位于"Watson"教学楼的系的每位教师的ID和姓名.
+    + 找出至少选修过"Comp. Sci"系的一门课程的每位学生的ID和姓名.
+    + 找出在2018年至少上过一门课程的每位学生的ID和姓名.
+    + 找出在2018年没有上过任何课程的每位学生的ID和姓名.
 ]
 
 #question[
-    (_6.13_) An E-R diagram usually models the state of an enterprise at a point in time. Suppose we wish to track _temporal changes_, that is, changes to data over time. For example, Zhang may have been a student between September 2015 and May 2019, while Shankar may have had instructor Einstein as advisor from May 2018 to December 2018, and again from June 2019 to January 2020. Similary, attribute values of an entity or relationship, such as _title_ and _credits_ of _course_, _salary_, or even _name_ of _instructor_, and _tot_cred_ of _student_, can change over time.
-
-    One way to model temporal changes is as follows: We define a new data type called *valid_time*, which is a time interval, or a set of time intervals. We then associate a _valid_time_ attribute with each entity and relationship, recording the time periods during which the entity or relationship is valid. The end time of an interval can be infinity; for example, if Shankar became a student in September 2018, and is still a student, we can represent the end time of the _valid_time_ interval as infinity for the Shankar entity. Similarly, we model attributes that can change over time as a set of values, each with its own _valid_time_.
-    + Draw an E-R diagram with the _student_ and _instructor_ entities, and the _advisor_ relationship, with the above extensions to track temporal changes.
-    + Convert the E-R diagram discussed above into a set of relations.
-    It should be clear that the set of relations generated is rather complex, leading to difficulties in tasks such as writing queries in SQL. An alternative approach, which is used more widely, is to ignore temporal changes when designing the E-R model (in particular, temporal changes to attribute values), and to modify the relations generated from the E-R Model to track temporal changes.
+    (_6.13_) 考虑图6-13的员工数据库.为下面的每个查询给出元组关系演算表达式:
+    + 找出所有为"FBC"工作的员工的姓名.
+    + 找出所有为"FBC"工作的员工的姓名和居住城市.
+    + 找出所有为"FBC"工作且收入超过$10000$美元的员工的姓名、居住城市和街道地址.
+    + 找出所有居住在与其工作的公司相同城市的员工.
+    + 找出所有居住在与其经理相同城市和街道的员工.
+    + 找出所有在数据库中不为"FBC"工作的员工.
+    + 找出所有收入超过"SBC"的所有员工的员工.
+    + 假设公司可能位于几个城市.找出位于"SBC"所在的所有城市的每个公司名称.
 ]
 = No.2
 #question[
-    (_10.1_) Suppose you need to store a very large number of small files, each of size say 2 kilobytes. If your choice is between a distributed file system and distributed key-value store, which would your prefer and explain why.
+    (_10.1_) SSD可用作存储器和磁盘之间的存储设备,数据库的某些部分可以存储在SSD.另一种选择是把SSD用作磁盘的缓存.
+    + 如果需要实时查询,你会选择哪种方式?为什么?
+    + 如果有一个非常大型的客户关系,仅有一些磁盘块经常被访问,你会选择哪种方式?为什么?
 ]
 
 #question[
-    (_10.2_) Suppose you need to store data for a very large number of students in a distributed document store such as MongoDB. Suppose also that the data for each student correspond to the data in the _student_ and the _takes_ relations. How would you represent the above data about students, ensuring that all the data for a particular student can be accessed efficiently? Give an example of the data representation for one student.
+    (_10.2_) 一些数据库仅使用外侧磁道中的扇区而不是内侧磁道中的扇区.为什么?
 ]
 
 #question[
-    (_10.4_) Give pseudocode for computing a join $r join_(r.A = s.A) s$ using a single MapReduce step, assuming that the *map()* function is invoked on each tuple of $r$ and $s$. Assume that the *map()* function can find the name of the relation using *context.relname()*.
+    (_10.4_) 考虑从图10-6中的文件中删除记录5.比较下列实现技术:
+    + 将记录6移到记录5的位置并将记录7移到记录6的位置.
+    + 将记录7移到记录5的位置.
+    + 标记记录5为已删除.
 ]
 
 #question[
-    (_10.5_) What is the conceptual problem with the following snippet of Apache Spark code meant to work on very large data. Note that the *collect()* function returns a Java collection, and Java collections (from Java 8 onwards) support map and reduce functions.
-    ```java
-    JavaRDD<String> lines = sc.textFile('logDirectory');
-    int totalLength = lines.collect().map(s -> s.length())
-                                     .reduce(0, (a,b) -> a + b);
-    ```
+    (_10.5_) 给出经过下面每一步后图10-7中文件的结构:
+    + 插入(24556,Turnamian,Finance,9800).
+    + 删除记录2.
+    + 插入(34556,Thompson,Music,67000).
 ]
 
 #question[
-    (_10.6_) Apache Spark:
-    + How does Apache Spark perform computations in parallel?
-    + Explain the statement: "Apache Spark performs transformations on RDDs in a lazy manner."
-    + What are some of the benefits of lazy evaluation of operations in Apache Spark?
+    (_10.6_) 考虑_section_和_takes_关系.给出这两个关系的一个实例,包括$3$个课程,每个课程有$5$个学生.给出对这些关系使用多表聚簇的一种文件结构.
 ]
 
 #question[
-    (_10.10_) Give four ways in which information in web logs pertaining to the web pages visited by a user can be used by the web site.
+    (_10.10_) 对于下面每种情况,给出一个关系代数表达式和一个查询处理策略的示例:
+    + MRU优于LRU.
+    + LRU优于MRU.
 ]
 
 #question[
-    (_10.14_) ill in the blanks below to complete the following Apache Spark program which computes the number of occurrences of each word in a file. For simplicity we assume that words only occur in lowercase, and there are no punctuations marks.
-    ```java
-    JavaRDD<String> textFile = sc.textFile("hdfs://...");
-    JavaPairRDD<String, Integer> counts = textFile.____(s->Arrays.asList(s.split(" "))._____()).mapToPair(word -> new _______).reduceByKey((a,b) -> a + b);
-    ```
+    (_10.14_) 在变长记录表示中,用空位图表示属性是否为空值.
+    + 对于变长字段,如果值为空,那么偏移量字段和长度字段中应该存储什么?
+    + 在一些应用中,元组有非常大量的属性,其中大部分属性都是空.你能否更改记录表示使得一个空值属性的开销仅为空位图中的一个位?
 ]
 
 #question[
-    (_10.15_) Suppose a stream can deliver tuples out of order with respect to tuple timestamps. What extra information should the stream provide, so a stream query processing system can decide when all tuples in a window have been seen?
+    (_10.15_) 解释为什么在磁盘块上分配记录会显著影响数据库系统的性能.
 ]
 
 #question[
-    (_10.16_) Explain how multiple operations can be executed on a stream using a publish-subscribe system such as Apache Kafka.
+    (_10.19_) 标准的缓冲区管理器假定每个块的大小和读取代价是相同的.设想一个缓冲区管理器使用对象引用率而不是LRU.假设我们要在缓冲区存储变长和读取代价可变的对象.试建议缓冲区管理器可以如何选择要从缓冲区中移出哪个块.
 ]
