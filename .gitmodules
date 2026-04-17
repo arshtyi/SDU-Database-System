@@ -1,0 +1,3 @@
+[submodule "experiment/2"]
+	path = experiment/2
+	url = https://github.com/arshtyi/SDU-Database-System-Experiment-2
