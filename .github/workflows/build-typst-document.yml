@@ -33,14 +33,14 @@ jobs:
           for dir in $(ls experiment/1 | grep -E '^[0-9]+$' | sort -n); do
             if [ -f "experiment/1/$dir/$dir.md" ]; then
               pandoc "experiment/1/$dir/$dir.md" -o "experiment/1/$dir/$dir.typ"
-              echo "" >> "experiment/main.typ"
-              cat "experiment/1/$dir/$dir.typ" >> "experiment/main.typ"
+              echo "" >> "experiment/1/main.typ"
+              cat "experiment/1/$dir/$dir.typ" >> "experiment/1/main.typ"
             fi
           done
           if [ -f "experiment/1/answer/answer.md" ]; then
             pandoc "experiment/1/answer/answer.md" -o "experiment/1/answer/answer.typ"
-            echo "" >> "experiment/main.typ"
-            cat "experiment/1/answer/answer.typ" >> "experiment/main.typ"
+            echo "" >> "experiment/1/main.typ"
+            cat "experiment/1/answer/answer.typ" >> "experiment/1/main.typ"
           fi
 
       - name: Create output directory
@@ -51,7 +51,7 @@ jobs:
 
       - name: Compile Typst document
         run: |
-          typst compile experiment/main.typ output/experiment.pdf --font-path ~/.fontist/fonts
+          typst compile experiment/1/main.typ output/experiment-1.pdf --font-path ~/.fontist/fonts
           typst compile homework/main.typ output/homework.pdf --font-path ~/.fontist/fonts
 
       - name: Get current date
