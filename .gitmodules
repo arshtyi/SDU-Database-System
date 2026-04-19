@@ -1,3 +1,8 @@
+[submodule "experiment/1/instruction"]
+	path = experiment/1/instruction
+	url = https://github.com/arshtyi/SDU-Database-System-Instruction
+
 [submodule "experiment/2"]
 	path = experiment/2
 	url = https://github.com/arshtyi/SDU-Database-System-Experiment-2
+

@@ -78,8 +78,8 @@ def process_answers(input_excel, output_md):
 
 
 def main():
-    input_file = r"1\answer\answer.xlsx"
-    output_file = r"1\answer\answer.md"
+    input_file = r"answer\answer.xlsx"
+    output_file = r"answer\answer.md"
     process_answers(input_file, output_file)
     print(f"提取完成，答案已追加至 {output_file}")
 
