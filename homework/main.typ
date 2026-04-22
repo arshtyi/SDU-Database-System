@@ -22,9 +22,9 @@
 // #let question = question.with(supplement: "Q ", ref-on: true)
 
 #title[
-    山东大学计算机科学与技术学院 \
-    24 数据、智能数据库系统课后作业
+    山东大学计算机科学与技术学院数据库系统课后作业
 ]
+#exam-info(info: (班级: "24智能", 教师: "梁文革"))
 #notice(
     [出于方便使用#link("https://github.com/gbchu/ezexam", "gbchu/ezexam:0.3.1")作模板.],
     [源码:#link("https://github.com/arshtyi/SDU-Database-System").],
