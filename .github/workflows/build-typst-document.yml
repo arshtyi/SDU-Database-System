@@ -1,9 +1,9 @@
 name: Build Typst Document
 
 on:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
   workflow_dispatch:
 
 jobs:
@@ -20,7 +20,7 @@ jobs:
         uses: fontist/setup-fontist@v2
 
       - name: Install fonts from manifest
-        run: fontist manifest install --confirm-license manifest.yml
+        run: fontist install "Fira Code" "IBM Plex Mono" "IBM Plex Serif" "Times New Roman" "SimHei" "Noto Serif CJK SC" "Noto Sans CJK SC" "TeX Gyre Termes Math" "TeXGyreTermes" --newest -a -h
 
       - name: Install Source Han Serif SC
         run: |
@@ -30,19 +30,29 @@ jobs:
       - name: Convert Markdown to Typst and append to main.typ
         run: |
           sudo apt-get update && sudo apt-get install -y pandoc
-          for dir in $(ls experiment | grep -E '^[0-9]+$' | sort -n); do
-            if [ -f "experiment/$dir/$dir.md" ]; then
-              pandoc "experiment/$dir/$dir.md" -o "experiment/$dir/$dir.typ"
-              echo "" >> main.typ
-              cat "experiment/$dir/$dir.typ" >> main.typ
+          for dir in $(ls experiment/1 | grep -E '^[0-9]+$' | sort -n); do
+            if [ -f "experiment/1/$dir/$dir.md" ]; then
+              pandoc "experiment/1/$dir/$dir.md" -o "experiment/1/$dir/$dir.typ"
+              echo "" >> "experiment/1/main.typ"
+              cat "experiment/1/$dir/$dir.typ" >> "experiment/1/main.typ"
             fi
           done
+          if [ -f "experiment/1/answer/answer.md" ]; then
+            pandoc "experiment/1/answer/answer.md" -o "experiment/1/answer/answer.typ"
+            echo "" >> "experiment/1/main.typ"
+            cat "experiment/1/answer/answer.typ" >> "experiment/1/main.typ"
+          fi
+
+      - name: Create output directory
+        run: mkdir -p output
 
       - name: Setup Typst
         uses: typst-community/setup-typst@v4
 
       - name: Compile Typst document
-        run: typst compile main.typ main.pdf --font-path ~/.fontist/fonts
+        run: |
+          typst compile experiment/1/main.typ output/experiment-1.pdf --font-path ~/.fontist/fonts
+          typst compile homework/main.typ output/homework.pdf --font-path ~/.fontist/fonts
 
       - name: Get current date
         id: date
@@ -60,6 +70,6 @@ jobs:
 
             - **Commit Hash**: `${{ github.sha }}`
             - **Commit Message**: ${{ github.event.head_commit.message }}
-          files: main.pdf
+          files: output/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
